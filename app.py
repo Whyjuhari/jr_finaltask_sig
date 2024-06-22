@@ -13,7 +13,7 @@ from streamlit_folium import st_folium
 def color_function(feature):
     jumlah_penduduk = feature['properties']['JUMLAH_PEN']
     
-    # berdasarkan dari file .geoJson
+    # berdasarkan yang di ambil dari file .geoJson
     if jumlah_penduduk <= 840:
         return '#E6E6FA'  
     elif 840 < jumlah_penduduk <= 1564:
