@@ -73,6 +73,6 @@ def create_map():
     folium.GeoJson(gdf).add_to(m)
     return m
 
-st.title("Penerapan streamlit map dengan map archgis")
+st.title("Penerapan streamlit map dengan map")
 map = create_map()
 st_folium(map, width=700, height=500)
