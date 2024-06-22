@@ -18,7 +18,7 @@ Proyek ini menampilkan peta interaktif Kecamatan Banggae menggunakan data geospa
 
 1. **Kloning Repositori : **
    ```bash
-   git clone [https://github.com/your-username/your-repository-name.git](https://github.com/your-username/your-repository-name.git)
+   git clone https://github.com/Whyjuhari/jr_finaltask_sig.git
 2. **Install Dependensi : **
    ```bash
    pip install -r requirements.txt
