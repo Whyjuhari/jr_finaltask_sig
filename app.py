@@ -3,18 +3,18 @@ import geopandas as gpd
 import folium
 from streamlit_folium import st_folium
 
-# Mengubah file shp ke dalam geojson
-gdf = gpd.read_file('Banggae\KecamatanBanggae.shp')
-gdf.to_file('KecBanggae.geojson', driver='GeoJSON')
+# # merubah file shp yang di ambil dari ArcGis ke dalam geojson
+# gdf = gpd.read_file('Banggae\KecamatanBanggae.shp')
+# gdf.to_file('KecBanggae.geojson', driver='GeoJSON')
 
 def create_map():
-    # Baca file GeoJSON
+    # mengambik file yang sudah di ubah
     gdf = gpd.read_file('KecBanggae.geojson')
     
-    # Dapatkan koordinat tengah untuk pemetaan
+    # ambil titik koordinat tengah untuk pemetaan
     center = [gdf.geometry.centroid.y.mean(), gdf.geometry.centroid.x.mean()]
 
-    # Buat peta folium
+    # membuat peta dengan folium
     m = folium.Map(location=center, zoom_start=13)
 
     folium.GeoJson(gdf).add_to(m)
