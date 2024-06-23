@@ -13,22 +13,23 @@ from streamlit_folium import st_folium
 def color_function(feature):
     jumlah_penduduk = feature['properties']['JUMLAH_PEN']
     
-    # berdasarkan yang di ambil dari file .geoJson
     if jumlah_penduduk <= 840:
-        return '#E6E6FA'  
+        return '#C0C0C0'  # Light Gray
     elif 840 < jumlah_penduduk <= 1564:
-        return '#D8BFD8' 
+        return '#FF0000'  # Red
     elif 1564 < jumlah_penduduk <= 1687:
-        return '#B0C4DE'  
+        return '#FFA500'  # Orange
     elif 1687 < jumlah_penduduk <= 1966:
-        return '#87CEEB'  
+        return '#FFFF00'  # Yellow
     elif 1966 < jumlah_penduduk <= 2194:
-        return '#6495ED'  
+        return '#ADFF2F'  # Green Yellow
     elif 2194 < jumlah_penduduk <= 5655:
-        return '#4169E1'  
+        return '#00FFFF'  # Cyan
+    elif 5655 < jumlah_penduduk <= 5705:
+        return '#0000FF'  # Blue
     else:
-        return '#191970'  
-    
+        return '#FF00FF'  # Magenta
+
 def create_map():
     # mengambil file geosjon
     gdf = gpd.read_file('KecBanggae.geojson')
@@ -73,6 +74,6 @@ def create_map():
     folium.GeoJson(gdf).add_to(m)
     return m
 
-st.title("Penerapan streamlit map dengan map")
+st.title("Menerapakan map archgis pada streamlit map_(juhari_D0221322).")
 map = create_map()
 st_folium(map, width=700, height=500)
