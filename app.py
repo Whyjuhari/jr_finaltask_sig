@@ -69,6 +69,6 @@ def create_map():
     folium.GeoJson(gdf).add_to(m)
     return m
 
-st.title("Menerapakan map archgis pada streamlit map (Juhari_D0221322).")
+st.title("Kecematan Banggae, Kabupaten Majene, Provinsi Sulawesi Barat\nMenerapakan map archgis pada streamlit map (Juhari_D0221322).")
 map = create_map()
 st_folium(map, width=700, height=500)
