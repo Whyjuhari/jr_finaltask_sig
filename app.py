@@ -3,31 +3,28 @@ import geopandas as gpd
 import folium
 from streamlit_folium import st_folium
 
-# # mengubah file shp ke dalam geojson
-# gdf = gpd.read_file('Banggae\KecamatanBanggae.shp')
-# gdf.to_file('KecBanggae.geojson', driver='GeoJSON')
-    
-    
 
 # memberikan warna berdasarkan jumlah penduduk
 def color_function(feature):
-    jumlah_penduduk = feature['properties']['JUMLAH_PEN']
+    nama_desa = feature['properties']['DESA']
     
-    # berdasarkan dari file .geoJson
-    if jumlah_penduduk <= 840:
-        return '#E6E6FA'  
-    elif 840 < jumlah_penduduk <= 1564:
-        return '#D8BFD8' 
-    elif 1564 < jumlah_penduduk <= 1687:
-        return '#B0C4DE'  
-    elif 1687 < jumlah_penduduk <= 1966:
-        return '#87CEEB'  
-    elif 1966 < jumlah_penduduk <= 2194:
-        return '#6495ED'  
-    elif 2194 < jumlah_penduduk <= 5655:
-        return '#4169E1'  
+    if nama_desa == "BANGGAE":
+        return '#C0C0C0'  # Light Gray
+    elif nama_desa == "BARU":
+        return '#FF0000'  # Red
+    elif nama_desa == "GALUNG":
+        return '#FFA500'  # Orange
+    elif nama_desa == "PAMBOBORANG":
+        return '#FFFF00'  # Yellow
+    elif nama_desa == "PANGALIALI":
+        return '#ADFF2F'  # Green Yellow
+    elif nama_desa == "RANGAS":
+        return '#00FFFF'  # Cyan
+    elif nama_desa == "TOTOLI":
+        return '#0000FF'  # Blue
     else:
-        return '#191970'  
+        return '#FF00FF'  # Magenta
+
     
 def create_map():
     # mengambil file geosjon
@@ -61,7 +58,7 @@ def create_map():
             location=[row.geometry.centroid.y, row.geometry.centroid.x],
             popup=row['DESA'],
             icon=folium.DivIcon(
-                html=f"""<div style="font-weight:bold; font-size:12px;">{row['DESA']}</div>""",
+                html=f"""<div style="font-weight:bold; font-size:10px;">{row['DESA']}</div>""",
                 icon_size=(150, 36),
                 icon_anchor=(75, 18)
             )
